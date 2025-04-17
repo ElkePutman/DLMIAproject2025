@@ -9,7 +9,7 @@
   <em>Figure 1: Visual representation of the CSA-Net architecture.</em>
 </p>
 
-Pytorch implementation of 
+For the Deep Learning for Medical Image Analysis course project at the University of Twente, we utilized the following PyTorch implementation:
 
 [A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention](https://doi.org/10.1016/j.compbiomed.2024.109173)
 
