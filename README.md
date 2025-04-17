@@ -78,6 +78,11 @@ python testing.py --max_epochs 50 --batch_size 8 --base_lr 0.0005
 ```
 The segmented masks on the test set can be found in the Results/ folder
 
+* To compute the average Dice score and Hausdorf distance compute the following
+```
+python compute_metrics.py
+```
+
 ## Reference
 * [A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention](https://doi.org/10.1016/j.compbiomed.2024.109173)
 * [Google ViT](https://github.com/google-research/vision_transformer)
