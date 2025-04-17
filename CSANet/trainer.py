@@ -210,28 +210,6 @@ def trainer_CSANet(args, model, snapshot_path):
 
 
 
-#             End-of-epoch validation and checkpointing
-#             if epoch_num > 10 and (epoch_num % 5 == 0 or epoch_num == 39):
-#                 avg_dice = vol_inference(args, model, validation=True)
-#                 if avg_dice > best_performance:
-#                     best_performance = avg_dice
-#                     save_mode_path = os.path.join(snapshot_path, 'best_model.pth')
-#                     torch.save(model.state_dict(), save_mode_path)
-#                     logging.info(f"Saved new best model to {save_mode_path}")
-    
-    # best_fold, lowest_val_loss = min(fold_val_losses, key=lambda x: x[1])
-    # logging.info(f"Overall best model is from fold {best_fold} with validation loss: {lowest_val_loss}")
 
-    # Laad het beste model (model van de fold met laagste validatieverlies)
-    # best_model_path = os.path.join(snapshot_path, f'best_model_fold_{best_fold}.pth')
-    # best_model = model
-    # best_model.load_state_dict(torch.load(best_model_path))
-    # save_mode_path = os.path.join(snapshot_path, 'best_model.pth')
-    # torch.save(best_model.state_dict(), save_mode_path)
-    # logging.info(f"Saved new best model to {save_mode_path}")
-    
-    
-    # vol_inference(args, model, validation=False)
-    # writer.close()
     
     return "Training Finished!"
