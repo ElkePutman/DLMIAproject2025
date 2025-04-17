@@ -9,6 +9,8 @@ from networks.vit_seg_modeling import VisionTransformer as ViT_seg
 from networks.vit_seg_modeling import CONFIGS as CONFIGS_ViT_seg
 from trainer import trainer_CSANet
 from datasets.dataset_CSANet import CSANet_dataset
+import wandb
+
 
 
 
@@ -49,13 +51,20 @@ parser.add_argument('--dataset', type=str,
 parser.add_argument('--list_dir', type=str,
                     default='./lists', help='list dir')
 parser.add_argument('--num_classes', type=int,
-                    default=5, help='output channel of network') # class change -----------------
+                    default=4, help='output channel of network') # class change -----------------
 parser.add_argument('--volume_path', type=str,
                     default='../data', help='root dir for validation volume data')
+# parser.add_argument('--max_iterations', type=int,
+#                     default=300000, help='maximum epoch number to train')
+# parser.add_argument('--max_epochs', type=int,
+#                     default=40, help='maximum epoch number to train')
+
 parser.add_argument('--max_iterations', type=int,
-                    default=300000, help='maximum epoch number to train')
+                    default=300000, help='maximum epoch number to train') #Niet vergeten aan te passen
 parser.add_argument('--max_epochs', type=int,
-                    default=40, help='maximum epoch number to train')
+                    default=10, help='maximum epoch number to train')
+
+
 parser.add_argument('--batch_size', type=int,
                     default=16, help='batch_size per gpu')
 parser.add_argument('--n_gpu', type=int, default=1, help='total gpu')
@@ -75,6 +84,23 @@ parser.add_argument('--vit_patches_size', type=int,
                     default=16, help='vit_patches_size, default is 16')
 
 args = parser.parse_args()
+
+#set wandb
+wandb.login()
+run = wandb.init(
+    project="DLMIA Project CSA net extra dataaug", 
+    name="Extra data aug",
+    config={
+        "dataset": args.dataset,
+        "num_folds": 5,
+        "num_classes": args.num_classes,
+        "batch_size": args.batch_size,
+        "learning_rate": args.base_lr,
+        "epochs": args.max_epochs,
+        "vit_model": args.vit_name,
+        "vit_patches_size": args.vit_patches_size,
+    }
+)
 
 
 if __name__ == "__main__":
@@ -97,7 +123,7 @@ if __name__ == "__main__":
             'root_path': '../data/train_npz',
             'volume_path': '../data',
             'list_dir': './lists',
-            'num_classes': 5, 
+            'num_classes': 4, #aangepast naar ACDC
             'z_spacing': 1,
         },
     }
@@ -137,3 +163,4 @@ if __name__ == "__main__":
     # Start training using the specified trainer for the dataset
     trainer = {'CSANet': trainer_CSANet}
     trainer[dataset_name](args, net, snapshot_path)
+    run.finish()
