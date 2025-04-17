@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # DLMIAproject2025
 
 
