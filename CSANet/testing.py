@@ -43,9 +43,9 @@ args.volume_path = '../data'
 args.dataset = 'CSANet'
 args.list_dir = './lists'
 base_model_dir = "../model"
-base_result_dir = "./Extra_probmaps"
-combined_prob_map_dir = "./Extra_probmaps_combined"
-final_nifti_output_dir = "./Extra_final"
+base_result_dir = "./probmaps"
+combined_prob_map_dir = "./probmaps_combined"
+final_nifti_output_dir = "./Results"
 test_volume_dir = "../data/testVol"
 
 patch_size = [args.img_size, args.img_size]
