@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 # DLMIAproject2025
-=======
-# CSA-Net: A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention
+
+
 
 <p align="center">
   <img src="https://github.com/mirthAI/CSA-Net/assets/26433669/f2f55c71-0361-478c-85e8-dedf3cc13659" alt="image">
@@ -9,11 +9,12 @@
   <em>Figure 1: Visual representation of the CSA-Net architecture.</em>
 </p>
 
-Official PyTorch implementation of: 
+Pytorch implementation of 
 
 [A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention](https://doi.org/10.1016/j.compbiomed.2024.109173)
 
-The code is only for research purposes. If you have any questions regarding how to use this code, feel free to contact Amarjeet Kumar (amarjeetkumar@ufl.edu).
+This original PyTorch code has been extended by us with k-fold cross-validation and data augmentation, and adapted for the ACDC dataset.
+
 
 ## Requirements
 Python==3.9.16
@@ -34,13 +35,13 @@ pip install -r requirements.txt
 
 Here we use the ProstateX dataset as an example. This dataset consists of T2-weighted prostate MRI, along with expert-annotation of four different prostate regions: transition zone, peripheral zone, urethra, and anterior fibromuscular stroma.
 
-1. Access to the ProstateX dataset:
-   Sign up in the [official ProstateX website](https://www.cancerimagingarchive.net/collection/prostatex/) and download the dataset. Partition it in training and testing dataset as :- trainVol, trainMask, testVol, testMask. Put these folders under data directory.
+First download the ACDC dataset and partition it in training and testing dataset as :- trainVol, trainMask, testVol, testMask. Put these folders under data directory.
+
+1. The data needs to be preprocessed before it can be used by the network.
       * Run the preprocessing script, which would generate train_npz folder containing 2D images in folder "data/", data list files in folder "lists/" and train.csv for overview.
 ```
 python preprocessing.py
 ```
-OR You can download our preprocessed dataset using this [link](https://drive.google.com/drive/folders/1qAkX34E_5kP-2pKDI0RChqWKfTNl1FVQ?usp=sharing). After downloading, copy the "lists" directory from utils to "/CSANet" path to store text files containing the names of all samples for each task.
 
 The directory structure of the whole project is as follows:
 
@@ -61,14 +62,24 @@ The directory structure of the whole project is as follows:
 ```
 
 ### 3. Train/Test
-* Please go to the folder "CSANet/" and it's ready for you to train and test the model.
+* Please go to the folder "CSANet/" and it's ready for you to train the model. 
+
 ```
 python train.py
-python test.py
 ```
-You can see the test outputs in the "Results/" folder.
+* You can modify certain hyperparameters by passing arguments—for example, training with a different number of epochs, batch size, or learning rate can be done by using the following command:
+```
+python train.py --max_epochs 50 --batch_size 8 --base_lr 0.0005
+```
+* To test the network, you can run the following command. Make sure to use the same hyperparameters as those used during training:
+
+```
+python testing.py --max_epochs 50 --batch_size 8 --base_lr 0.0005
+```
+The segmented masks on the test set can be found in the Results/ folder
 
 ## Reference
+* [A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention](https://doi.org/10.1016/j.compbiomed.2024.109173)
 * [Google ViT](https://github.com/google-research/vision_transformer)
 * [ViT-pytorch](https://github.com/jeonsworld/ViT-pytorch)
 * [segmentation_models.pytorch](https://github.com/qubvel/segmentation_models.pytorch)
@@ -78,17 +89,5 @@ This project incorporates concepts and implementations based on the following re
    - "Non-local Neural Networks": [Paper](https://arxiv.org/abs/1711.07971) | [GitHub Repository](https://github.com/facebookresearch/video-nonlocal-net)
   
 
-## Citations
-Kindly cite our paper as follows if you use our code.
-```bibtex
-@misc{kumar2024CSANet,
-    title={A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention},
-    author={Amarjeet Kumar and Hongxu Jiang and Muhammad Imran and Cyndi Valdes and Gabriela Leon and Dahyun Kang and  Parvathi Nataraj and Yuyin Zhou and Michael D. Weiss and Wei Shao},
-    journal={Computers in Biology and Medicine},
-    volume={182},
-    pages={109173},
-    year={2024},
-    publisher={Elsevier}
-}
-```
+
 >>>>>>> master
