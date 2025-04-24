@@ -90,7 +90,20 @@ To perform classification a few steps need to be taken before you can run it.
 ```
 main_classification.py
 ```
-*Replace INSERT PATH TO RESTRUCTERED DATA FOLDER HERE with the path to the restructured_database_sinval_revised folder 
+*Replace INSERT PATH TO GROUND TRUTH MAKS HERE with the path to the folder containing the ground truth masks of the training data. 
+* Replace INSERT PATH TO PATIENT INFO OF TRAIN GROUP HERE with the path to the folder with the patient information of the train data
+* Replace INSERT PATH TO SEGMENTATION MASKS YOU WANT TO CLASSIFY HERE with the path to the folder with the results of the segmentation masks of the test data   
+
+* Replace INSERT PATH TO PATIENT INFO OF TEST GROUP HERE with the path to the folder with the patient information of the test data 
+
+* If you want to train the model, set train_model to True. The default is not to train the model again but used the trained model saved in the files indicated in step 2 
+
+* If you don’t want a ROC curve, set roc to False. In the default settings a roc curve of the result is made.  
+
+* Run the main file with
+  ```
+  python main_classification.py
+  ```   
 
 
 
