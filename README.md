@@ -90,7 +90,7 @@ To perform classification a few steps need to be taken before you can run it.
 ```
 main_classification.py
 ```
-*Replace INSERT PATH TO GROUND TRUTH MAKS HERE with the path to the folder containing the ground truth masks of the training data. 
+* Replace INSERT PATH TO GROUND TRUTH MAKS HERE with the path to the folder containing the ground truth masks of the training data. 
 * Replace INSERT PATH TO PATIENT INFO OF TRAIN GROUP HERE with the path to the folder with the patient information of the train data
 * Replace INSERT PATH TO SEGMENTATION MASKS YOU WANT TO CLASSIFY HERE with the path to the folder with the results of the segmentation masks of the test data   
 
