@@ -78,9 +78,9 @@ python testing.py --max_epochs 50 --batch_size 8 --base_lr 0.0005
 ```
 The segmented masks on the test set can be found in the Results/ folder
 
-* To compute the average Dice score and Hausdorf distance compute the following
+* To compute the dice scores, Hausdorff distances and volumes of the masks you need to run the following
 ```
-python compute_metrics.py
+python Metrics_organizers.py ground_truth/ prediction/
 ```
 
 ## Reference
