@@ -84,6 +84,16 @@ The segmented masks on the test set can be found in the Results/ folder
 ```
 python Metrics_organizers.py ground_truth/ prediction/
 ```
+### 4. Classification
+To perform classification a few steps need to be taken before you can run it. 
+* Open the following file from the classification folder
+```
+main_classification.py
+```
+*Replace INSERT PATH TO RESTRUCTERED DATA FOLDER HERE with the path to the restructured_database_sinval_revised folder 
+
+
+
 
 ## Reference
 * [A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention](https://doi.org/10.1016/j.compbiomed.2024.109173)
