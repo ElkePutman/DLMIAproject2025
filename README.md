@@ -56,8 +56,10 @@ The directory structure of the whole project is as follows:
 └── data
     ├── trainVol
     ├── trainMask
-    └── testVol
+    ├── trainPatientInfo
+    ├── testVol
     ├── testMask
+    ├── testPatientInfo
     └── train_npz     
 ```
 
