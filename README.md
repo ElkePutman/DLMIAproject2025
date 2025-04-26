@@ -32,10 +32,7 @@ pip install -r requirements.txt
 ```
 
 ### 2. Prepare data
-
-Here we use the ProstateX dataset as an example. This dataset consists of T2-weighted prostate MRI, along with expert-annotation of four different prostate regions: transition zone, peripheral zone, urethra, and anterior fibromuscular stroma.
-
-First download the ACDC dataset and partition it in training and testing dataset as :- trainVol, trainMask, testVol, testMask. Put these folders under data directory.
+First download the ACDC dataset and partition it in training and testing dataset as :trainVol, trainMask, testVol, testMask. Put these folders under the data directory. Besides, put the information files under trainPatientInfo and testPatientinfo with names that should look like :patient101_info according to the patientID
 
 1. The data needs to be preprocessed before it can be used by the network.
       * Run the preprocessing script, which would generate train_npz folder containing 2D images in folder "data/", data list files in folder "lists/" and train.csv for overview.
